@@ -1,6 +1,7 @@
 # Beginners R Course 2025
 
 > [!NOTE]
+>
 > LAST UPDATE: 29.04.2025
 
 # R Programming Course for Biologists
