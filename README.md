@@ -1,8 +1,8 @@
 # Beginners R Course 2025
 
 > [!NOTE]
->
-> LAST UPDATE: 29.04.2025
+> <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/info.svg" width="5" height="5"> 
+> $${\color{blue}LAST UPDATE: 29.04.2025}$$
 
 # R Programming Course for Biologists
 
