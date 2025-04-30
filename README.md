@@ -52,6 +52,8 @@ We strongly recommend that you try to familiarize yourself with R and RStudio by
 
 __Day 1:__
 
+- Introduction to Course
+
 *Session 1 :: Introduction to R Basics*
 - R Background 
 - Interacting with R (CLI & R-Studio, Rmd)
