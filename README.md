@@ -38,7 +38,7 @@ install.packages(c("knitr", "rmarkdown"))
 ```
 in the R Console.
 
-3- expected to have a GitHub account.
+3- to have a GitHub account.
 
 ## Important Installation Notice
 
