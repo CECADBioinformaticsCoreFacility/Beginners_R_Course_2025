@@ -15,9 +15,9 @@ Participants will learn through a mix of lectures, hands-on exercises, and inter
 
 ### Prerequisites
 
-Participants are expected:
+Participants are expected to:
 
-1- to have the following installed on their computers before the course begins:
+1- have the following installed on their computers before the course begins:
 
 You can find the installation guides once you click on them:
 
@@ -26,7 +26,7 @@ You can find the installation guides once you click on them:
 - RStudio [RStudio Installation Guide](https://www.rstudio.com/products/rstudio/download/)
 - Git [Git Installation Guide](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
-2- to install the following R-libraries:
+2- install the following R-libraries:
   - [knitr](https://cran.r-project.org/package=knitr)
   
   - [rmarkdown](https://cran.r-project.org/package=rmarkdown)  
@@ -38,7 +38,7 @@ install.packages(c("knitr", "rmarkdown"))
 ```
 in the R Console.
 
-3- to have a GitHub account.
+3- have a GitHub account.
 
 ## Important Installation Notice
 
@@ -46,7 +46,7 @@ It's crucial for all participants to install R, RStudio, and Git prior to the st
 
 > [!IMPORTANT]
 > ### Pre-Course Zoom Session
-> Considering the importance of a smooth start to our course, we're planning to host a Zoom pre-course session. This session is intended to help with the installation process, address any issues you might encounter, and answer any questions. Stay tuned for the schedule and details. It is practically not possible to cater any technical issues during the Course itself. So, we urge you to please take part in the pre-course session.
+> Considering the importance of a smooth start to our course, we're planning to host a Zoom pre-course session. This session is intended to help with the installation process, address any issues you might encounter, and answer any questions. Stay tuned for the schedule and details.
 
 ### Trouble Installing?
 
@@ -87,7 +87,6 @@ __Day 1:__
 __Day 2:__
 
 *Session 5 :: Descriptive Statistics*
-- (From CGA from earlier course)
 
 *Session 6 :: More Basic Concepts in R*
 - Control Flow
