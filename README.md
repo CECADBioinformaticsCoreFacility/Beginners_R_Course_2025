@@ -23,7 +23,7 @@ You can find the installation guides once you click on them:
 - R [R Installation Guide](https://cran.r-project.org/)
 - RStudio [RStudio Installation Guide](https://www.rstudio.com/products/rstudio/download/)
 - Git [Git Installation Guide](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-<details>
+
   <summary>Installing the following R-libraries:</summary>
 
 - [knitr](https://cran.r-project.org/package=knitr)  
@@ -34,7 +34,7 @@ You can find the installation guides once you click on them:
 ```r
 install.packages(c("knitr", "rmarkdown"))
 ```
-</details>
+
 
 
 Participants are also expected to have a GitHub account.
