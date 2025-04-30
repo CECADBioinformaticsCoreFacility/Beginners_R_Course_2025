@@ -25,17 +25,15 @@ You can find the installation guides once you click on them:
 - Git [Git Installation Guide](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
   <summary>Installing the following R-libraries:</summary>
+  - [knitr](https://cran.r-project.org/package=knitr)  
+  - [rmarkdown](https://cran.r-project.org/package=rmarkdown)  
 
-- [knitr](https://cran.r-project.org/package=knitr)  
-- [rmarkdown](https://cran.r-project.org/package=rmarkdown)  
-
-**To install these additional packages, use the following R command:**
+**To install these packages, you can use the following R command:**
 
 ```r
 install.packages(c("knitr", "rmarkdown"))
 ```
-
-
+in the R Console.
 
 Participants are also expected to have a GitHub account.
 
