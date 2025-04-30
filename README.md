@@ -15,7 +15,9 @@ Participants will learn through a mix of lectures, hands-on exercises, and inter
 
 ### Prerequisites
 
-Participants are expected to have the following installed on their computers before the course begins:
+Participants are expected:
+
+1- to have the following installed on their computers before the course begins:
 
 You can find the installation guides once you click on them:
 
@@ -24,7 +26,7 @@ You can find the installation guides once you click on them:
 - RStudio [RStudio Installation Guide](https://www.rstudio.com/products/rstudio/download/)
 - Git [Git Installation Guide](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
-Participants are also expected to install the following R-libraries:
+2- to install the following R-libraries:
   - [knitr](https://cran.r-project.org/package=knitr)
   
   - [rmarkdown](https://cran.r-project.org/package=rmarkdown)  
@@ -36,7 +38,7 @@ install.packages(c("knitr", "rmarkdown"))
 ```
 in the R Console.
 
-Participants are also expected to have a GitHub account.
+3- expected to have a GitHub account.
 
 ## Important Installation Notice
 
