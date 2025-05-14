@@ -658,7 +658,7 @@ Dr.&nbsp;Debasish Mukherjee, Dr.&nbsp;Ulrike Goebel, Dr.&nbsp;Ali Abdallah
 <p>🛠 <strong>Focus: Base R only — no extra packages yet!</strong></p>
 </section>
 <section id="why-start-with-base-r" class="slide level2">
-<h2>Why Start with Base R</h2>
+<h2>Why Start with Base R?</h2>
 <ul>
 <li>Learn R’s core concepts: data types, operations, programming basics</li>
 </ul>
@@ -2312,18 +2312,13 @@ Levels: green red yellow</code></pre>
 <h4 id="step-1-split-the-full-table-into-species-specific-tables">Step 1: Split the full table into species-specific tables</h4>
 </div>
 <div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href=""></a>species_tables <span class="ot">&lt;-</span> </span>
-<span id="cb61-2"><a href=""></a>    <span class="fu">split</span>(iris[,<span class="sc">-</span><span class="dv">5</span>],  <span class="do">## what to split</span></span>
-<span id="cb61-3"><a href=""></a>          iris[, <span class="dv">5</span>])  <span class="do">## split by what</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <p><br>
 </p>
 </div>
 <div class="fragment">
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href=""></a><span class="fu">class</span>(species_tables)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href=""></a><span class="fu">class</span>(species_tables)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "list"</code></pre>
@@ -2334,7 +2329,7 @@ Levels: green red yellow</code></pre>
 <div class="fragment">
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href=""></a><span class="fu">names</span>(species_tables)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href=""></a><span class="fu">names</span>(species_tables)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "setosa"     "versicolor" "virginica" </code></pre>
@@ -2345,13 +2340,13 @@ Levels: green red yellow</code></pre>
 <div class="fragment">
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href=""></a><span class="fu">head</span>(species_tables[[<span class="st">"setosa"</span>]],<span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href=""></a><span class="fu">head</span>(species_tables[[<span class="st">"setosa"</span>]],<span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output cell-output-stdout">
-<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width rowID
-1          5.1         3.5          1.4         0.2     1
-2          4.9         3.0          1.4         0.2     2
-3          4.7         3.2          1.3         0.2     3</code></pre>
+<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width
+1          5.1         3.5          1.4         0.2
+2          4.9         3.0          1.4         0.2
+3          4.7         3.2          1.3         0.2</code></pre>
 </div>
 </div></div>
 </div>
@@ -2366,25 +2361,25 @@ Levels: green red yellow</code></pre>
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href=""></a>species_means <span class="ot">&lt;-</span> </span>
-<span id="cb68-2"><a href=""></a>    <span class="fu">rbind</span>(<span class="at">setosa =</span> </span>
-<span id="cb68-3"><a href=""></a>            <span class="fu">colMeans</span>( <span class="do">## return table column means as a vector</span></span>
-<span id="cb68-4"><a href=""></a>                species_tables[[<span class="st">"setosa"</span>]]</span>
-<span id="cb68-5"><a href=""></a>                ),</span>
-<span id="cb68-6"><a href=""></a>          <span class="at">versicolor =</span> </span>
-<span id="cb68-7"><a href=""></a>            <span class="fu">colMeans</span>(species_tables[[<span class="st">"versicolor"</span>]]),</span>
-<span id="cb68-8"><a href=""></a>          <span class="at">virginica =</span> </span>
-<span id="cb68-9"><a href=""></a>            <span class="fu">colMeans</span>(species_tables[[<span class="st">"virginica"</span>]])</span>
-<span id="cb68-10"><a href=""></a>    )</span>
-<span id="cb68-11"><a href=""></a></span>
-<span id="cb68-12"><a href=""></a>species_means</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href=""></a>species_means <span class="ot">&lt;-</span> </span>
+<span id="cb67-2"><a href=""></a>    <span class="fu">rbind</span>(<span class="at">setosa =</span> </span>
+<span id="cb67-3"><a href=""></a>            <span class="fu">colMeans</span>( <span class="do">## return table column means as a vector</span></span>
+<span id="cb67-4"><a href=""></a>                species_tables[[<span class="st">"setosa"</span>]]</span>
+<span id="cb67-5"><a href=""></a>                ),</span>
+<span id="cb67-6"><a href=""></a>          <span class="at">versicolor =</span> </span>
+<span id="cb67-7"><a href=""></a>            <span class="fu">colMeans</span>(species_tables[[<span class="st">"versicolor"</span>]]),</span>
+<span id="cb67-8"><a href=""></a>          <span class="at">virginica =</span> </span>
+<span id="cb67-9"><a href=""></a>            <span class="fu">colMeans</span>(species_tables[[<span class="st">"virginica"</span>]])</span>
+<span id="cb67-10"><a href=""></a>    )</span>
+<span id="cb67-11"><a href=""></a></span>
+<span id="cb67-12"><a href=""></a>species_means</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
-<pre><code>           Sepal.Length Sepal.Width Petal.Length Petal.Width rowID
-setosa            5.006       3.428        1.462       0.246  25.5
-versicolor        5.936       2.770        4.260       1.326  75.5
-virginica         6.588       2.974        5.552       2.026 125.5</code></pre>
+<pre><code>           Sepal.Length Sepal.Width Petal.Length Petal.Width
+setosa            5.006       3.428        1.462       0.246
+versicolor        5.936       2.770        4.260       1.326
+virginica         6.588       2.974        5.552       2.026</code></pre>
 </div>
 </div>
 <p>&nbsp;</p>
@@ -2402,12 +2397,12 @@ virginica         6.588       2.974        5.552       2.026 125.5</code></pre>
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href=""></a><span class="do">## These colors are supposed to be easy to</span></span>
-<span id="cb70-2"><a href=""></a><span class="do">## discriminate for sight-impaired people.</span></span>
-<span id="cb70-3"><a href=""></a>species_colors <span class="ot">=</span> <span class="fu">setNames</span>( <span class="do">## makes a named vector</span></span>
-<span id="cb70-4"><a href=""></a>                    <span class="fu">palette</span>()[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>],  <span class="fu">rownames</span>(species_means)</span>
-<span id="cb70-5"><a href=""></a>                 )</span>
-<span id="cb70-6"><a href=""></a>species_colors</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href=""></a><span class="do">## These colors are supposed to be easy to</span></span>
+<span id="cb69-2"><a href=""></a><span class="do">## discriminate for sight-impaired people.</span></span>
+<span id="cb69-3"><a href=""></a>species_colors <span class="ot">=</span> <span class="fu">setNames</span>( <span class="do">## makes a named vector</span></span>
+<span id="cb69-4"><a href=""></a>                    <span class="fu">palette</span>()[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>],  <span class="fu">rownames</span>(species_means)</span>
+<span id="cb69-5"><a href=""></a>                 )</span>
+<span id="cb69-6"><a href=""></a>species_colors</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    setosa versicolor  virginica 
    "black"  "#DF536B"  "#61D04F" </code></pre>
@@ -2417,12 +2412,12 @@ virginica         6.588       2.974        5.552       2.026 125.5</code></pre>
 <div class="fragment">
 <p>&nbsp;</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href=""></a><span class="do">## colors reflecting the organ type:</span></span>
-<span id="cb72-2"><a href=""></a>trait_colors <span class="ot">&lt;-</span></span>
-<span id="cb72-3"><a href=""></a>    <span class="fu">c</span>(<span class="at">Petal.Length =</span> <span class="st">"orange2"</span>,<span class="at">Petal.Width =</span> <span class="st">"yellow2"</span>,</span>
-<span id="cb72-4"><a href=""></a>      <span class="at">Sepal.Length =</span> <span class="st">"blue3"</span>,<span class="at">Sepal.Width =</span> <span class="st">"lightblue"</span></span>
-<span id="cb72-5"><a href=""></a>    )</span>
-<span id="cb72-6"><a href=""></a>trait_colors </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href=""></a><span class="do">## colors reflecting the organ type:</span></span>
+<span id="cb71-2"><a href=""></a>trait_colors <span class="ot">&lt;-</span></span>
+<span id="cb71-3"><a href=""></a>    <span class="fu">c</span>(<span class="at">Petal.Length =</span> <span class="st">"orange2"</span>,<span class="at">Petal.Width =</span> <span class="st">"yellow2"</span>,</span>
+<span id="cb71-4"><a href=""></a>      <span class="at">Sepal.Length =</span> <span class="st">"blue3"</span>,<span class="at">Sepal.Width =</span> <span class="st">"lightblue"</span></span>
+<span id="cb71-5"><a href=""></a>    )</span>
+<span id="cb71-6"><a href=""></a>trait_colors </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Petal.Length  Petal.Width Sepal.Length  Sepal.Width 
    "orange2"    "yellow2"      "blue3"  "lightblue" </code></pre>
@@ -2442,29 +2437,29 @@ virginica         6.588       2.974        5.552       2.026 125.5</code></pre>
 <div class="fragment">
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href=""></a><span class="fu">barplot</span>(<span class="do">## one plot per column == trait,</span></span>
-<span id="cb74-2"><a href=""></a>        <span class="do">## one bar == species mean!</span></span>
-<span id="cb74-3"><a href=""></a>        species_means,</span>
-<span id="cb74-4"><a href=""></a>        </span>
-<span id="cb74-5"><a href=""></a>        <span class="do">## do not stack the bars</span></span>
-<span id="cb74-6"><a href=""></a>        <span class="at">beside=</span><span class="cn">TRUE</span>,</span>
-<span id="cb74-7"><a href=""></a>        </span>
-<span id="cb74-8"><a href=""></a>        <span class="do">## larger group labels</span></span>
-<span id="cb74-9"><a href=""></a>        <span class="at">cex.names=</span><span class="fl">1.5</span>,</span>
-<span id="cb74-10"><a href=""></a>        </span>
-<span id="cb74-11"><a href=""></a>        <span class="at">col=</span>species_colors,</span>
-<span id="cb74-12"><a href=""></a>        )</span>
-<span id="cb74-13"><a href=""></a></span>
-<span id="cb74-14"><a href=""></a><span class="do">## add a legend (plot "augmentation"!)</span></span>
-<span id="cb74-15"><a href=""></a><span class="fu">legend</span>(<span class="st">"topright"</span>,</span>
-<span id="cb74-16"><a href=""></a>       <span class="fu">rownames</span>(species_means), </span>
-<span id="cb74-17"><a href=""></a>       <span class="at">fill=</span>species_colors,</span>
-<span id="cb74-18"><a href=""></a>       <span class="at">cex=</span><span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href=""></a><span class="fu">barplot</span>(<span class="do">## one plot per column == trait,</span></span>
+<span id="cb73-2"><a href=""></a>        <span class="do">## one bar == species mean!</span></span>
+<span id="cb73-3"><a href=""></a>        species_means,</span>
+<span id="cb73-4"><a href=""></a>        </span>
+<span id="cb73-5"><a href=""></a>        <span class="do">## do not stack the bars</span></span>
+<span id="cb73-6"><a href=""></a>        <span class="at">beside=</span><span class="cn">TRUE</span>,</span>
+<span id="cb73-7"><a href=""></a>        </span>
+<span id="cb73-8"><a href=""></a>        <span class="do">## larger group labels</span></span>
+<span id="cb73-9"><a href=""></a>        <span class="at">cex.names=</span><span class="fl">1.5</span>,</span>
+<span id="cb73-10"><a href=""></a>        </span>
+<span id="cb73-11"><a href=""></a>        <span class="at">col=</span>species_colors,</span>
+<span id="cb73-12"><a href=""></a>        )</span>
+<span id="cb73-13"><a href=""></a></span>
+<span id="cb73-14"><a href=""></a><span class="do">## add a legend (plot "augmentation"!)</span></span>
+<span id="cb73-15"><a href=""></a><span class="fu">legend</span>(<span class="st">"topright"</span>,</span>
+<span id="cb73-16"><a href=""></a>       <span class="fu">rownames</span>(species_means), </span>
+<span id="cb73-17"><a href=""></a>       <span class="at">fill=</span>species_colors,</span>
+<span id="cb73-18"><a href=""></a>       <span class="at">cex=</span><span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="BeginnersDay1_files/figure-revealjs/unnamed-chunk-39-1.png" width="960"></p>
+<p><img data-src="BeginnersDay1_files/figure-revealjs/unnamed-chunk-40-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -2478,34 +2473,34 @@ virginica         6.588       2.974        5.552       2.026 125.5</code></pre>
 <div class="fragment">
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href=""></a>m <span class="ot">&lt;-</span>  <span class="fu">t</span>(species_means) <span class="do">## TRANSPOSE</span></span>
-<span id="cb75-2"><a href=""></a></span>
-<span id="cb75-3"><a href=""></a><span class="fu">barplot</span>(<span class="do">## one plot per column == species,</span></span>
-<span id="cb75-4"><a href=""></a>        <span class="do">## one bar == trait mean!</span></span>
-<span id="cb75-5"><a href=""></a>        m,</span>
-<span id="cb75-6"><a href=""></a>        </span>
-<span id="cb75-7"><a href=""></a>        <span class="do">## do not stack the bars</span></span>
-<span id="cb75-8"><a href=""></a>        <span class="at">beside=</span><span class="cn">TRUE</span>,</span>
-<span id="cb75-9"><a href=""></a>        </span>
-<span id="cb75-10"><a href=""></a>        <span class="do">## larger group labels</span></span>
-<span id="cb75-11"><a href=""></a>        <span class="at">cex.names=</span><span class="dv">2</span>,</span>
-<span id="cb75-12"><a href=""></a>        </span>
-<span id="cb75-13"><a href=""></a>        <span class="at">col=</span>trait_colors,</span>
-<span id="cb75-14"><a href=""></a>        </span>
-<span id="cb75-15"><a href=""></a>        <span class="do">## increase y limit to fit the legend</span></span>
-<span id="cb75-16"><a href=""></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>),</span>
-<span id="cb75-17"><a href=""></a>        <span class="at">cex =</span> <span class="dv">2</span></span>
-<span id="cb75-18"><a href=""></a>        )</span>
-<span id="cb75-19"><a href=""></a></span>
-<span id="cb75-20"><a href=""></a><span class="do">## add a legend (plot "augmentation"!)</span></span>
-<span id="cb75-21"><a href=""></a><span class="fu">legend</span>(<span class="at">x=</span><span class="dv">1</span>,<span class="at">y=</span><span class="dv">10</span>, <span class="do">##"topright",</span></span>
-<span id="cb75-22"><a href=""></a>       <span class="fu">rownames</span>(m), </span>
-<span id="cb75-23"><a href=""></a>       <span class="at">fill=</span>trait_colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href=""></a>m <span class="ot">&lt;-</span>  <span class="fu">t</span>(species_means) <span class="do">## TRANSPOSE</span></span>
+<span id="cb74-2"><a href=""></a></span>
+<span id="cb74-3"><a href=""></a><span class="fu">barplot</span>(<span class="do">## one plot per column == species,</span></span>
+<span id="cb74-4"><a href=""></a>        <span class="do">## one bar == trait mean!</span></span>
+<span id="cb74-5"><a href=""></a>        m,</span>
+<span id="cb74-6"><a href=""></a>        </span>
+<span id="cb74-7"><a href=""></a>        <span class="do">## do not stack the bars</span></span>
+<span id="cb74-8"><a href=""></a>        <span class="at">beside=</span><span class="cn">TRUE</span>,</span>
+<span id="cb74-9"><a href=""></a>        </span>
+<span id="cb74-10"><a href=""></a>        <span class="do">## larger group labels</span></span>
+<span id="cb74-11"><a href=""></a>        <span class="at">cex.names=</span><span class="dv">2</span>,</span>
+<span id="cb74-12"><a href=""></a>        </span>
+<span id="cb74-13"><a href=""></a>        <span class="at">col=</span>trait_colors,</span>
+<span id="cb74-14"><a href=""></a>        </span>
+<span id="cb74-15"><a href=""></a>        <span class="do">## increase y limit to fit the legend</span></span>
+<span id="cb74-16"><a href=""></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>),</span>
+<span id="cb74-17"><a href=""></a>        <span class="at">cex =</span> <span class="dv">2</span></span>
+<span id="cb74-18"><a href=""></a>        )</span>
+<span id="cb74-19"><a href=""></a></span>
+<span id="cb74-20"><a href=""></a><span class="do">## add a legend (plot "augmentation"!)</span></span>
+<span id="cb74-21"><a href=""></a><span class="fu">legend</span>(<span class="at">x=</span><span class="dv">1</span>,<span class="at">y=</span><span class="dv">10</span>, <span class="do">##"topright",</span></span>
+<span id="cb74-22"><a href=""></a>       <span class="fu">rownames</span>(m), </span>
+<span id="cb74-23"><a href=""></a>       <span class="at">fill=</span>trait_colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="BeginnersDay1_files/figure-revealjs/unnamed-chunk-40-1.png" width="960"></p>
+<p><img data-src="BeginnersDay1_files/figure-revealjs/unnamed-chunk-41-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -2519,15 +2514,15 @@ virginica         6.588       2.974        5.552       2.026 125.5</code></pre>
 <div class="fragment">
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href=""></a><span class="fu">pie</span>(species_means[,<span class="st">"Petal.Length"</span>], </span>
-<span id="cb76-2"><a href=""></a>    <span class="at">labels =</span> <span class="fu">rownames</span>(species_means),</span>
-<span id="cb76-3"><a href=""></a>    <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"Mean Petal Lengths in "</span>,</span>
-<span id="cb76-4"><a href=""></a>                 <span class="st">"Fisher's Iris Species"</span>),</span>
-<span id="cb76-5"><a href=""></a>    <span class="at">col=</span>species_colors,</span>
-<span id="cb76-6"><a href=""></a>    </span>
-<span id="cb76-7"><a href=""></a>    <span class="at">cex=</span><span class="dv">2</span>, <span class="do">## larger text annotation</span></span>
-<span id="cb76-8"><a href=""></a>    <span class="at">cex.main =</span> <span class="dv">2</span> <span class="do">## larger title</span></span>
-<span id="cb76-9"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href=""></a><span class="fu">pie</span>(species_means[,<span class="st">"Petal.Length"</span>], </span>
+<span id="cb75-2"><a href=""></a>    <span class="at">labels =</span> <span class="fu">rownames</span>(species_means),</span>
+<span id="cb75-3"><a href=""></a>    <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"Mean Petal Lengths in "</span>,</span>
+<span id="cb75-4"><a href=""></a>                 <span class="st">"Fisher's Iris Species"</span>),</span>
+<span id="cb75-5"><a href=""></a>    <span class="at">col=</span>species_colors,</span>
+<span id="cb75-6"><a href=""></a>    </span>
+<span id="cb75-7"><a href=""></a>    <span class="at">cex=</span><span class="dv">2</span>, <span class="do">## larger text annotation</span></span>
+<span id="cb75-8"><a href=""></a>    <span class="at">cex.main =</span> <span class="dv">2</span> <span class="do">## larger title</span></span>
+<span id="cb75-9"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
@@ -2545,15 +2540,15 @@ virginica         6.588       2.974        5.552       2.026 125.5</code></pre>
 <p>The <strong><code>pie()</code></strong> function can only represent one set of numbers at a time. In addition, comparing angles on a piechart is visually not as easy as comparing bar heights.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href=""></a><span class="fu">pie</span>(species_means[<span class="st">"setosa"</span>,], </span>
-<span id="cb77-2"><a href=""></a>    <span class="at">labels =</span> <span class="fu">colnames</span>(species_means),</span>
-<span id="cb77-3"><a href=""></a>    <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"Mean Flower Organ Dimensions"</span>,</span>
-<span id="cb77-4"><a href=""></a>                 <span class="st">"in Iris setosa"</span>),</span>
-<span id="cb77-5"><a href=""></a>    <span class="at">col=</span>trait_colors,</span>
-<span id="cb77-6"><a href=""></a>    </span>
-<span id="cb77-7"><a href=""></a>    <span class="at">cex=</span><span class="dv">2</span>, <span class="do">## larger text annotation</span></span>
-<span id="cb77-8"><a href=""></a>    <span class="at">cex.main =</span> <span class="dv">2</span> <span class="do">## larger title</span></span>
-<span id="cb77-9"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href=""></a><span class="fu">pie</span>(species_means[<span class="st">"setosa"</span>,], </span>
+<span id="cb76-2"><a href=""></a>    <span class="at">labels =</span> <span class="fu">colnames</span>(species_means),</span>
+<span id="cb76-3"><a href=""></a>    <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"Mean Flower Organ Dimensions"</span>,</span>
+<span id="cb76-4"><a href=""></a>                 <span class="st">"in Iris setosa"</span>),</span>
+<span id="cb76-5"><a href=""></a>    <span class="at">col=</span>trait_colors,</span>
+<span id="cb76-6"><a href=""></a>    </span>
+<span id="cb76-7"><a href=""></a>    <span class="at">cex=</span><span class="dv">2</span>, <span class="do">## larger text annotation</span></span>
+<span id="cb76-8"><a href=""></a>    <span class="at">cex.main =</span> <span class="dv">2</span> <span class="do">## larger title</span></span>
+<span id="cb76-9"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
@@ -2571,19 +2566,19 @@ virginica         6.588       2.974        5.552       2.026 125.5</code></pre>
 <div class="fragment">
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href=""></a><span class="do">## (see par() for graphical parameters!)</span></span>
-<span id="cb78-2"><a href=""></a><span class="fu">plot</span>(<span class="at">x=</span><span class="cn">NULL</span>,<span class="at">y=</span><span class="cn">NULL</span>,</span>
-<span id="cb78-3"><a href=""></a>     </span>
-<span id="cb78-4"><a href=""></a>     <span class="do">## Note that if you start empty, </span></span>
-<span id="cb78-5"><a href=""></a>     <span class="do">## you have to set the canvas </span></span>
-<span id="cb78-6"><a href=""></a>     <span class="do">## dimensions yourself!</span></span>
-<span id="cb78-7"><a href=""></a>     </span>
-<span id="cb78-8"><a href=""></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3</span>),</span>
-<span id="cb78-9"><a href=""></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">9</span>),</span>
-<span id="cb78-10"><a href=""></a>     <span class="at">xlab =</span> <span class="st">"x dimension"</span>,</span>
-<span id="cb78-11"><a href=""></a>     <span class="at">ylab =</span> <span class="st">"y dimension"</span></span>
-<span id="cb78-12"><a href=""></a>     </span>
-<span id="cb78-13"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href=""></a><span class="do">## (see par() for graphical parameters!)</span></span>
+<span id="cb77-2"><a href=""></a><span class="fu">plot</span>(<span class="at">x=</span><span class="cn">NULL</span>,<span class="at">y=</span><span class="cn">NULL</span>,</span>
+<span id="cb77-3"><a href=""></a>     </span>
+<span id="cb77-4"><a href=""></a>     <span class="do">## Note that if you start empty, </span></span>
+<span id="cb77-5"><a href=""></a>     <span class="do">## you have to set the canvas </span></span>
+<span id="cb77-6"><a href=""></a>     <span class="do">## dimensions yourself!</span></span>
+<span id="cb77-7"><a href=""></a>     </span>
+<span id="cb77-8"><a href=""></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3</span>),</span>
+<span id="cb77-9"><a href=""></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">9</span>),</span>
+<span id="cb77-10"><a href=""></a>     <span class="at">xlab =</span> <span class="st">"x dimension"</span>,</span>
+<span id="cb77-11"><a href=""></a>     <span class="at">ylab =</span> <span class="st">"y dimension"</span></span>
+<span id="cb77-12"><a href=""></a>     </span>
+<span id="cb77-13"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
@@ -2601,9 +2596,9 @@ virginica         6.588       2.974        5.552       2.026 125.5</code></pre>
 <div class="fragment">
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href=""></a><span class="fu">plot</span>(<span class="at">x=</span>iris<span class="sc">$</span>Petal.Width, </span>
-<span id="cb79-2"><a href=""></a>     <span class="at">y=</span>iris<span class="sc">$</span>Petal.Length</span>
-<span id="cb79-3"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href=""></a><span class="fu">plot</span>(<span class="at">x=</span>iris<span class="sc">$</span>Petal.Width, </span>
+<span id="cb78-2"><a href=""></a>     <span class="at">y=</span>iris<span class="sc">$</span>Petal.Length</span>
+<span id="cb78-3"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
@@ -2621,10 +2616,10 @@ virginica         6.588       2.974        5.552       2.026 125.5</code></pre>
 <p>There is more than one way to relate x/y dimensions to data!</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb80" data-code-line-numbers="3,4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href=""></a><span class="do">## Initialize a new plot, </span></span>
-<span id="cb80-2"><a href=""></a><span class="do">## using formula notation to specify x and y:</span></span>
-<span id="cb80-3"><a href=""></a><span class="fu">plot</span>(Petal.Length <span class="sc">~</span> Petal.Width,</span>
-<span id="cb80-4"><a href=""></a>     <span class="at">data =</span> iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb79" data-code-line-numbers="3,4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href=""></a><span class="do">## Initialize a new plot, </span></span>
+<span id="cb79-2"><a href=""></a><span class="do">## using formula notation to specify x and y:</span></span>
+<span id="cb79-3"><a href=""></a><span class="fu">plot</span>(Petal.Length <span class="sc">~</span> Petal.Width,</span>
+<span id="cb79-4"><a href=""></a>     <span class="at">data =</span> iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
@@ -2642,7 +2637,7 @@ virginica         6.588       2.974        5.552       2.026 125.5</code></pre>
 <p>Add a grid:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href=""></a><span class="fu">grid</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href=""></a><span class="fu">grid</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
@@ -2660,21 +2655,21 @@ virginica         6.588       2.974        5.552       2.026 125.5</code></pre>
 <p>Overplot some points with color, in order to identify a group in your data:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href=""></a><span class="fu">points</span>(Petal.Length <span class="sc">~</span> Petal.Width, </span>
-<span id="cb82-2"><a href=""></a>       </span>
-<span id="cb82-3"><a href=""></a>       <span class="at">data=</span><span class="fu">subset</span>(iris,</span>
-<span id="cb82-4"><a href=""></a>                Species <span class="sc">==</span> <span class="st">"versicolor"</span></span>
-<span id="cb82-5"><a href=""></a>            ),</span>
-<span id="cb82-6"><a href=""></a>       </span>
-<span id="cb82-7"><a href=""></a>       <span class="at">pch=</span><span class="dv">21</span>, <span class="co"># symbol code 21: bullet with</span></span>
-<span id="cb82-8"><a href=""></a>               <span class="co"># separate interior color (bg) </span></span>
-<span id="cb82-9"><a href=""></a>               <span class="co"># and border color (col)</span></span>
-<span id="cb82-10"><a href=""></a>               <span class="do">## See points()!</span></span>
-<span id="cb82-11"><a href=""></a></span>
-<span id="cb82-12"><a href=""></a>       <span class="do">## Set color manually:</span></span>
-<span id="cb82-13"><a href=""></a>       <span class="at">col=</span> <span class="st">"red"</span>, </span>
-<span id="cb82-14"><a href=""></a>       <span class="at">bg =</span> <span class="st">"red"</span>  </span>
-<span id="cb82-15"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href=""></a><span class="fu">points</span>(Petal.Length <span class="sc">~</span> Petal.Width, </span>
+<span id="cb81-2"><a href=""></a>       </span>
+<span id="cb81-3"><a href=""></a>       <span class="at">data=</span><span class="fu">subset</span>(iris,</span>
+<span id="cb81-4"><a href=""></a>                Species <span class="sc">==</span> <span class="st">"versicolor"</span></span>
+<span id="cb81-5"><a href=""></a>            ),</span>
+<span id="cb81-6"><a href=""></a>       </span>
+<span id="cb81-7"><a href=""></a>       <span class="at">pch=</span><span class="dv">21</span>, <span class="co"># symbol code 21: bullet with</span></span>
+<span id="cb81-8"><a href=""></a>               <span class="co"># separate interior color (bg) </span></span>
+<span id="cb81-9"><a href=""></a>               <span class="co"># and border color (col)</span></span>
+<span id="cb81-10"><a href=""></a>               <span class="do">## See points()!</span></span>
+<span id="cb81-11"><a href=""></a></span>
+<span id="cb81-12"><a href=""></a>       <span class="do">## Set color manually:</span></span>
+<span id="cb81-13"><a href=""></a>       <span class="at">col=</span> <span class="st">"red"</span>, </span>
+<span id="cb81-14"><a href=""></a>       <span class="at">bg =</span> <span class="st">"red"</span>  </span>
+<span id="cb81-15"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
@@ -2692,19 +2687,19 @@ virginica         6.588       2.974        5.552       2.026 125.5</code></pre>
 <p>Color all points by species, using our named vector <strong>species_colors</strong>:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb83" data-code-line-numbers="7-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href=""></a><span class="fu">plot</span>(Petal.Length <span class="sc">~</span> Petal.Width, </span>
-<span id="cb83-2"><a href=""></a>     <span class="at">data=</span>iris,</span>
-<span id="cb83-3"><a href=""></a>     <span class="at">pch=</span><span class="dv">21</span>,</span>
-<span id="cb83-4"><a href=""></a>     </span>
-<span id="cb83-5"><a href=""></a>     <span class="do">## index the "species_colors" vector</span></span>
-<span id="cb83-6"><a href=""></a>     <span class="do">## by species names:</span></span>
-<span id="cb83-7"><a href=""></a>     <span class="at">col=</span>species_colors[Species], </span>
-<span id="cb83-8"><a href=""></a>     <span class="at">bg =</span>species_colors[Species]  </span>
-<span id="cb83-9"><a href=""></a>     )</span>
-<span id="cb83-10"><a href=""></a></span>
-<span id="cb83-11"><a href=""></a><span class="fu">legend</span>(<span class="st">"topleft"</span>,</span>
-<span id="cb83-12"><a href=""></a>       <span class="fu">rownames</span>(species_means),</span>
-<span id="cb83-13"><a href=""></a>       <span class="at">fill=</span>species_colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82" data-code-line-numbers="7-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href=""></a><span class="fu">plot</span>(Petal.Length <span class="sc">~</span> Petal.Width, </span>
+<span id="cb82-2"><a href=""></a>     <span class="at">data=</span>iris,</span>
+<span id="cb82-3"><a href=""></a>     <span class="at">pch=</span><span class="dv">21</span>,</span>
+<span id="cb82-4"><a href=""></a>     </span>
+<span id="cb82-5"><a href=""></a>     <span class="do">## index the "species_colors" vector</span></span>
+<span id="cb82-6"><a href=""></a>     <span class="do">## by species names:</span></span>
+<span id="cb82-7"><a href=""></a>     <span class="at">col=</span>species_colors[Species], </span>
+<span id="cb82-8"><a href=""></a>     <span class="at">bg =</span>species_colors[Species]  </span>
+<span id="cb82-9"><a href=""></a>     )</span>
+<span id="cb82-10"><a href=""></a></span>
+<span id="cb82-11"><a href=""></a><span class="fu">legend</span>(<span class="st">"topleft"</span>,</span>
+<span id="cb82-12"><a href=""></a>       <span class="fu">rownames</span>(species_means),</span>
+<span id="cb82-13"><a href=""></a>       <span class="at">fill=</span>species_colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
@@ -2722,31 +2717,31 @@ virginica         6.588       2.974        5.552       2.026 125.5</code></pre>
 <div class="fragment">
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href=""></a><span class="do">## See par() for line-related parameters!</span></span>
-<span id="cb84-2"><a href=""></a></span>
-<span id="cb84-3"><a href=""></a><span class="do">## Make a new data.frame, </span></span>
-<span id="cb84-4"><a href=""></a><span class="do">## containing only setosa:</span></span>
-<span id="cb84-5"><a href=""></a>df <span class="ot">&lt;-</span> <span class="fu">subset</span>(iris, Species<span class="sc">==</span><span class="st">"setosa"</span>)</span>
-<span id="cb84-6"><a href=""></a></span>
-<span id="cb84-7"><a href=""></a><span class="fu">plot</span>(</span>
-<span id="cb84-8"><a href=""></a>     <span class="co"># x is now the row number in df</span></span>
-<span id="cb84-9"><a href=""></a>     <span class="at">x=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df),</span>
-<span id="cb84-10"><a href=""></a>     <span class="at">xlab=</span><span class="st">"individual plant"</span>,</span>
-<span id="cb84-11"><a href=""></a>         </span>
-<span id="cb84-12"><a href=""></a>     <span class="at">y=</span>df<span class="sc">$</span>Petal.Width,</span>
-<span id="cb84-13"><a href=""></a>     <span class="at">ylab=</span><span class="st">"Petal.Width"</span>,</span>
-<span id="cb84-14"><a href=""></a>         </span>
-<span id="cb84-15"><a href=""></a>     <span class="do">## show both points and </span></span>
-<span id="cb84-16"><a href=""></a>     <span class="do">## connecting lines:</span></span>
-<span id="cb84-17"><a href=""></a>     <span class="at">type=</span><span class="st">"b"</span>,</span>
-<span id="cb84-18"><a href=""></a>     </span>
-<span id="cb84-19"><a href=""></a>     <span class="do">## line width:</span></span>
-<span id="cb84-20"><a href=""></a>     <span class="at">lwd =</span> <span class="dv">2</span>,</span>
-<span id="cb84-21"><a href=""></a>     <span class="do">## line style = dashed:</span></span>
-<span id="cb84-22"><a href=""></a>     <span class="at">lty=</span><span class="dv">2</span>,</span>
-<span id="cb84-23"><a href=""></a>         </span>
-<span id="cb84-24"><a href=""></a>     <span class="at">main=</span><span class="st">"Iris setosa"</span></span>
-<span id="cb84-25"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href=""></a><span class="do">## See par() for line-related parameters!</span></span>
+<span id="cb83-2"><a href=""></a></span>
+<span id="cb83-3"><a href=""></a><span class="do">## Make a new data.frame, </span></span>
+<span id="cb83-4"><a href=""></a><span class="do">## containing only setosa:</span></span>
+<span id="cb83-5"><a href=""></a>df <span class="ot">&lt;-</span> <span class="fu">subset</span>(iris, Species<span class="sc">==</span><span class="st">"setosa"</span>)</span>
+<span id="cb83-6"><a href=""></a></span>
+<span id="cb83-7"><a href=""></a><span class="fu">plot</span>(</span>
+<span id="cb83-8"><a href=""></a>     <span class="co"># x is now the row number in df</span></span>
+<span id="cb83-9"><a href=""></a>     <span class="at">x=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df),</span>
+<span id="cb83-10"><a href=""></a>     <span class="at">xlab=</span><span class="st">"individual plant"</span>,</span>
+<span id="cb83-11"><a href=""></a>         </span>
+<span id="cb83-12"><a href=""></a>     <span class="at">y=</span>df<span class="sc">$</span>Petal.Width,</span>
+<span id="cb83-13"><a href=""></a>     <span class="at">ylab=</span><span class="st">"Petal.Width"</span>,</span>
+<span id="cb83-14"><a href=""></a>         </span>
+<span id="cb83-15"><a href=""></a>     <span class="do">## show both points and </span></span>
+<span id="cb83-16"><a href=""></a>     <span class="do">## connecting lines:</span></span>
+<span id="cb83-17"><a href=""></a>     <span class="at">type=</span><span class="st">"b"</span>,</span>
+<span id="cb83-18"><a href=""></a>     </span>
+<span id="cb83-19"><a href=""></a>     <span class="do">## line width:</span></span>
+<span id="cb83-20"><a href=""></a>     <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb83-21"><a href=""></a>     <span class="do">## line style = dashed:</span></span>
+<span id="cb83-22"><a href=""></a>     <span class="at">lty=</span><span class="dv">2</span>,</span>
+<span id="cb83-23"><a href=""></a>         </span>
+<span id="cb83-24"><a href=""></a>     <span class="at">main=</span><span class="st">"Iris setosa"</span></span>
+<span id="cb83-25"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
@@ -2767,18 +2762,18 @@ The augmenting function <strong>lines()</strong> can do this.&nbsp;</p>
 <p>Here, we want to <strong>connect the (x,y) means of our three species</strong>:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href=""></a><span class="do">## Initialize a plain x/y plot:</span></span>
-<span id="cb85-2"><a href=""></a><span class="fu">plot</span>(Petal.Length <span class="sc">~</span> Petal.Width,</span>
-<span id="cb85-3"><a href=""></a>     <span class="at">data=</span>iris)</span>
-<span id="cb85-4"><a href=""></a></span>
-<span id="cb85-5"><a href=""></a><span class="do">## Add colored mean points, connected by lines</span></span>
-<span id="cb85-6"><a href=""></a><span class="fu">lines</span>(<span class="at">x=</span>species_means[,<span class="st">"Petal.Width"</span>],</span>
-<span id="cb85-7"><a href=""></a>      <span class="at">y=</span>species_means[,<span class="st">"Petal.Length"</span>],</span>
-<span id="cb85-8"><a href=""></a>      <span class="at">type=</span><span class="st">"b"</span>, <span class="co"># show both points and lines </span></span>
-<span id="cb85-9"><a href=""></a>      <span class="at">pch=</span><span class="dv">21</span>,</span>
-<span id="cb85-10"><a href=""></a>      <span class="at">bg=</span>species_colors,</span>
-<span id="cb85-11"><a href=""></a>      <span class="at">cex=</span><span class="fl">2.5</span></span>
-<span id="cb85-12"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href=""></a><span class="do">## Initialize a plain x/y plot:</span></span>
+<span id="cb84-2"><a href=""></a><span class="fu">plot</span>(Petal.Length <span class="sc">~</span> Petal.Width,</span>
+<span id="cb84-3"><a href=""></a>     <span class="at">data=</span>iris)</span>
+<span id="cb84-4"><a href=""></a></span>
+<span id="cb84-5"><a href=""></a><span class="do">## Add colored mean points, connected by lines</span></span>
+<span id="cb84-6"><a href=""></a><span class="fu">lines</span>(<span class="at">x=</span>species_means[,<span class="st">"Petal.Width"</span>],</span>
+<span id="cb84-7"><a href=""></a>      <span class="at">y=</span>species_means[,<span class="st">"Petal.Length"</span>],</span>
+<span id="cb84-8"><a href=""></a>      <span class="at">type=</span><span class="st">"b"</span>, <span class="co"># show both points and lines </span></span>
+<span id="cb84-9"><a href=""></a>      <span class="at">pch=</span><span class="dv">21</span>,</span>
+<span id="cb84-10"><a href=""></a>      <span class="at">bg=</span>species_colors,</span>
+<span id="cb84-11"><a href=""></a>      <span class="at">cex=</span><span class="fl">2.5</span></span>
+<span id="cb84-12"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
@@ -2796,15 +2791,15 @@ The augmenting function <strong>lines()</strong> can do this.&nbsp;</p>
 <div class="fragment">
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href=""></a><span class="fu">text</span>(<span class="at">x=</span>species_means[,<span class="st">"Petal.Width"</span>],   </span>
-<span id="cb86-2"><a href=""></a>     <span class="at">y=</span>species_means[,<span class="st">"Petal.Length"</span>],</span>
-<span id="cb86-3"><a href=""></a>     </span>
-<span id="cb86-4"><a href=""></a>     <span class="at">labels=</span><span class="fu">rownames</span>(species_means),</span>
-<span id="cb86-5"><a href=""></a>     </span>
-<span id="cb86-6"><a href=""></a>     <span class="at">pos=</span><span class="dv">4</span>, <span class="do">## put labels to the right of points</span></span>
-<span id="cb86-7"><a href=""></a>            <span class="do">## (see ?text)</span></span>
-<span id="cb86-8"><a href=""></a>     <span class="at">cex=</span><span class="dv">3</span>  <span class="do">## expansion factor for the text</span></span>
-<span id="cb86-9"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href=""></a><span class="fu">text</span>(<span class="at">x=</span>species_means[,<span class="st">"Petal.Width"</span>],   </span>
+<span id="cb85-2"><a href=""></a>     <span class="at">y=</span>species_means[,<span class="st">"Petal.Length"</span>],</span>
+<span id="cb85-3"><a href=""></a>     </span>
+<span id="cb85-4"><a href=""></a>     <span class="at">labels=</span><span class="fu">rownames</span>(species_means),</span>
+<span id="cb85-5"><a href=""></a>     </span>
+<span id="cb85-6"><a href=""></a>     <span class="at">pos=</span><span class="dv">4</span>, <span class="do">## put labels to the right of points</span></span>
+<span id="cb85-7"><a href=""></a>            <span class="do">## (see ?text)</span></span>
+<span id="cb85-8"><a href=""></a>     <span class="at">cex=</span><span class="dv">3</span>  <span class="do">## expansion factor for the text</span></span>
+<span id="cb85-9"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
@@ -2823,18 +2818,18 @@ The augmenting function <strong>lines()</strong> can do this.&nbsp;</p>
 <p><strong>Regression line</strong>:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb87" data-code-line-numbers="4-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href=""></a><span class="do">## Initialize a plain x/y plot:</span></span>
-<span id="cb87-2"><a href=""></a><span class="fu">plot</span>(Petal.Length <span class="sc">~</span> Petal.Width,</span>
-<span id="cb87-3"><a href=""></a>     <span class="at">data=</span>iris,</span>
-<span id="cb87-4"><a href=""></a>     <span class="do">## Put a title:</span></span>
-<span id="cb87-5"><a href=""></a>     <span class="at">main =</span> <span class="st">"Regression Line Example"</span>)</span>
-<span id="cb87-6"><a href=""></a> </span>
-<span id="cb87-7"><a href=""></a><span class="do">## Mark the linear regression line:</span></span>
-<span id="cb87-8"><a href=""></a><span class="fu">abline</span>(<span class="fu">lm</span>(Petal.Length <span class="sc">~</span> Petal.Width,</span>
-<span id="cb87-9"><a href=""></a>          <span class="at">data=</span>iris</span>
-<span id="cb87-10"><a href=""></a>       ),</span>
-<span id="cb87-11"><a href=""></a>       <span class="at">lty=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">"blue"</span></span>
-<span id="cb87-12"><a href=""></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86" data-code-line-numbers="4-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href=""></a><span class="do">## Initialize a plain x/y plot:</span></span>
+<span id="cb86-2"><a href=""></a><span class="fu">plot</span>(Petal.Length <span class="sc">~</span> Petal.Width,</span>
+<span id="cb86-3"><a href=""></a>     <span class="at">data=</span>iris,</span>
+<span id="cb86-4"><a href=""></a>     <span class="do">## Put a title:</span></span>
+<span id="cb86-5"><a href=""></a>     <span class="at">main =</span> <span class="st">"Regression Line Example"</span>)</span>
+<span id="cb86-6"><a href=""></a> </span>
+<span id="cb86-7"><a href=""></a><span class="do">## Mark the linear regression line:</span></span>
+<span id="cb86-8"><a href=""></a><span class="fu">abline</span>(<span class="fu">lm</span>(Petal.Length <span class="sc">~</span> Petal.Width,</span>
+<span id="cb86-9"><a href=""></a>          <span class="at">data=</span>iris</span>
+<span id="cb86-10"><a href=""></a>       ),</span>
+<span id="cb86-11"><a href=""></a>       <span class="at">lty=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">"blue"</span></span>
+<span id="cb86-12"><a href=""></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
@@ -2853,20 +2848,20 @@ The augmenting function <strong>lines()</strong> can do this.&nbsp;</p>
 <p><strong>Lines marking locations or slopes of interest</strong>:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb88" data-code-line-numbers="7-14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href=""></a><span class="do">## Initialize a plain x/y plot:</span></span>
-<span id="cb88-2"><a href=""></a><span class="fu">plot</span>(Petal.Length <span class="sc">~</span> Petal.Width,</span>
-<span id="cb88-3"><a href=""></a>     <span class="at">data=</span>iris,</span>
-<span id="cb88-4"><a href=""></a>     <span class="at">main =</span> <span class="st">"abline() example"</span></span>
-<span id="cb88-5"><a href=""></a>     )</span>
-<span id="cb88-6"><a href=""></a></span>
-<span id="cb88-7"><a href=""></a><span class="do">## Horizontal and vertical markers:</span></span>
-<span id="cb88-8"><a href=""></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fl">2.5</span>, <span class="at">col =</span> <span class="st">"red"</span>, </span>
-<span id="cb88-9"><a href=""></a>       <span class="at">lwd=</span><span class="dv">2</span> <span class="do">## line width</span></span>
-<span id="cb88-10"><a href=""></a>       )</span>
-<span id="cb88-11"><a href=""></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">0.75</span>, <span class="at">col =</span> <span class="st">"yellow"</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb88-12"><a href=""></a></span>
-<span id="cb88-13"><a href=""></a><span class="do">## An "assumed" regression line for reference:</span></span>
-<span id="cb88-14"><a href=""></a><span class="fu">abline</span>(<span class="at">a=</span><span class="dv">1</span>,<span class="at">b=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb87" data-code-line-numbers="7-14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href=""></a><span class="do">## Initialize a plain x/y plot:</span></span>
+<span id="cb87-2"><a href=""></a><span class="fu">plot</span>(Petal.Length <span class="sc">~</span> Petal.Width,</span>
+<span id="cb87-3"><a href=""></a>     <span class="at">data=</span>iris,</span>
+<span id="cb87-4"><a href=""></a>     <span class="at">main =</span> <span class="st">"abline() example"</span></span>
+<span id="cb87-5"><a href=""></a>     )</span>
+<span id="cb87-6"><a href=""></a></span>
+<span id="cb87-7"><a href=""></a><span class="do">## Horizontal and vertical markers:</span></span>
+<span id="cb87-8"><a href=""></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fl">2.5</span>, <span class="at">col =</span> <span class="st">"red"</span>, </span>
+<span id="cb87-9"><a href=""></a>       <span class="at">lwd=</span><span class="dv">2</span> <span class="do">## line width</span></span>
+<span id="cb87-10"><a href=""></a>       )</span>
+<span id="cb87-11"><a href=""></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">0.75</span>, <span class="at">col =</span> <span class="st">"yellow"</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb87-12"><a href=""></a></span>
+<span id="cb87-13"><a href=""></a><span class="do">## An "assumed" regression line for reference:</span></span>
+<span id="cb87-14"><a href=""></a><span class="fu">abline</span>(<span class="at">a=</span><span class="dv">1</span>,<span class="at">b=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
@@ -2886,12 +2881,12 @@ The augmenting function <strong>lines()</strong> can do this.&nbsp;</p>
 <p>The grid is <strong>specified by a matrix of possible plot positions</strong>, like so:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href=""></a><span class="do">## prepare the layout matrix</span></span>
-<span id="cb89-2"><a href=""></a>m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, </span>
-<span id="cb89-3"><a href=""></a>            <span class="at">nrow=</span><span class="dv">2</span>, </span>
-<span id="cb89-4"><a href=""></a>            <span class="at">ncol=</span><span class="dv">2</span>, </span>
-<span id="cb89-5"><a href=""></a>            <span class="at">byrow=</span><span class="cn">FALSE</span>)</span>
-<span id="cb89-6"><a href=""></a>m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href=""></a><span class="do">## prepare the layout matrix</span></span>
+<span id="cb88-2"><a href=""></a>m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, </span>
+<span id="cb88-3"><a href=""></a>            <span class="at">nrow=</span><span class="dv">2</span>, </span>
+<span id="cb88-4"><a href=""></a>            <span class="at">ncol=</span><span class="dv">2</span>, </span>
+<span id="cb88-5"><a href=""></a>            <span class="at">byrow=</span><span class="cn">FALSE</span>)</span>
+<span id="cb88-6"><a href=""></a>m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
@@ -2911,25 +2906,25 @@ The augmenting function <strong>lines()</strong> can do this.&nbsp;</p>
 <div class="fragment">
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href=""></a><span class="fu">layout</span>(m) <span class="do">## read the layout matrix</span></span>
-<span id="cb91-2"><a href=""></a></span>
-<span id="cb91-3"><a href=""></a>use_cols <span class="ot">=</span>  species_colors[iris<span class="sc">$</span>Species]</span>
-<span id="cb91-4"><a href=""></a><span class="do">## 1</span></span>
-<span id="cb91-5"><a href=""></a><span class="fu">plot</span>(Sepal.Length <span class="sc">~</span> Sepal.Width, <span class="at">data=</span>iris,</span>
-<span id="cb91-6"><a href=""></a>     <span class="at">pch=</span><span class="dv">21</span>, <span class="at">col=</span>use_cols, <span class="at">bg=</span>use_cols, </span>
-<span id="cb91-7"><a href=""></a>     <span class="at">cex.lab=</span><span class="dv">2</span>)</span>
-<span id="cb91-8"><a href=""></a><span class="do">## 2</span></span>
-<span id="cb91-9"><a href=""></a><span class="fu">plot</span>(Petal.Length <span class="sc">~</span> Petal.Width, <span class="at">data=</span>iris, </span>
-<span id="cb91-10"><a href=""></a>     <span class="at">pch=</span><span class="dv">21</span>, <span class="at">col=</span>use_cols, <span class="at">bg=</span>use_cols, </span>
-<span id="cb91-11"><a href=""></a>     <span class="at">cex.lab=</span><span class="dv">2</span>)</span>
-<span id="cb91-12"><a href=""></a><span class="do">## 3</span></span>
-<span id="cb91-13"><a href=""></a><span class="fu">plot</span>(Sepal.Length <span class="sc">~</span> Petal.Length, <span class="at">data=</span>iris, </span>
-<span id="cb91-14"><a href=""></a>     <span class="at">pch=</span><span class="dv">21</span>, <span class="at">col=</span>use_cols, <span class="at">bg=</span>use_cols, </span>
-<span id="cb91-15"><a href=""></a>     <span class="at">cex.lab=</span><span class="dv">2</span>)</span>
-<span id="cb91-16"><a href=""></a><span class="do">## 4</span></span>
-<span id="cb91-17"><a href=""></a><span class="fu">plot</span>(Sepal.Width <span class="sc">~</span> Petal.Width, <span class="at">data=</span>iris, </span>
-<span id="cb91-18"><a href=""></a>     <span class="at">pch=</span><span class="dv">21</span>, <span class="at">col=</span>use_cols, <span class="at">bg=</span>use_cols, </span>
-<span id="cb91-19"><a href=""></a>     <span class="at">cex.lab=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href=""></a><span class="fu">layout</span>(m) <span class="do">## read the layout matrix</span></span>
+<span id="cb90-2"><a href=""></a></span>
+<span id="cb90-3"><a href=""></a>use_cols <span class="ot">=</span>  species_colors[iris<span class="sc">$</span>Species]</span>
+<span id="cb90-4"><a href=""></a><span class="do">## 1</span></span>
+<span id="cb90-5"><a href=""></a><span class="fu">plot</span>(Sepal.Length <span class="sc">~</span> Sepal.Width, <span class="at">data=</span>iris,</span>
+<span id="cb90-6"><a href=""></a>     <span class="at">pch=</span><span class="dv">21</span>, <span class="at">col=</span>use_cols, <span class="at">bg=</span>use_cols, </span>
+<span id="cb90-7"><a href=""></a>     <span class="at">cex.lab=</span><span class="dv">2</span>)</span>
+<span id="cb90-8"><a href=""></a><span class="do">## 2</span></span>
+<span id="cb90-9"><a href=""></a><span class="fu">plot</span>(Petal.Length <span class="sc">~</span> Petal.Width, <span class="at">data=</span>iris, </span>
+<span id="cb90-10"><a href=""></a>     <span class="at">pch=</span><span class="dv">21</span>, <span class="at">col=</span>use_cols, <span class="at">bg=</span>use_cols, </span>
+<span id="cb90-11"><a href=""></a>     <span class="at">cex.lab=</span><span class="dv">2</span>)</span>
+<span id="cb90-12"><a href=""></a><span class="do">## 3</span></span>
+<span id="cb90-13"><a href=""></a><span class="fu">plot</span>(Sepal.Length <span class="sc">~</span> Petal.Length, <span class="at">data=</span>iris, </span>
+<span id="cb90-14"><a href=""></a>     <span class="at">pch=</span><span class="dv">21</span>, <span class="at">col=</span>use_cols, <span class="at">bg=</span>use_cols, </span>
+<span id="cb90-15"><a href=""></a>     <span class="at">cex.lab=</span><span class="dv">2</span>)</span>
+<span id="cb90-16"><a href=""></a><span class="do">## 4</span></span>
+<span id="cb90-17"><a href=""></a><span class="fu">plot</span>(Sepal.Width <span class="sc">~</span> Petal.Width, <span class="at">data=</span>iris, </span>
+<span id="cb90-18"><a href=""></a>     <span class="at">pch=</span><span class="dv">21</span>, <span class="at">col=</span>use_cols, <span class="at">bg=</span>use_cols, </span>
+<span id="cb90-19"><a href=""></a>     <span class="at">cex.lab=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
@@ -2942,7 +2937,7 @@ The augmenting function <strong>lines()</strong> can do this.&nbsp;</p>
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href=""></a><span class="fu">layout</span>(<span class="dv">1</span>) <span class="do">## back to full screen</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href=""></a><span class="fu">layout</span>(<span class="dv">1</span>) <span class="do">## back to full screen</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -2956,36 +2951,36 @@ with <strong>add=TRUE</strong>,&nbsp; its output goes directly to an existing pl
 <div class="fragment">
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href=""></a>setosa <span class="ot">&lt;-</span> <span class="fu">subset</span>(iris,Species<span class="sc">==</span><span class="st">"setosa"</span>)</span>
-<span id="cb93-2"><a href=""></a>versicolor <span class="ot">&lt;-</span> <span class="fu">subset</span>(iris,Species<span class="sc">==</span><span class="st">"versicolor"</span>)</span>
-<span id="cb93-3"><a href=""></a>virginica <span class="ot">&lt;-</span> <span class="fu">subset</span>(iris,Species<span class="sc">==</span><span class="st">"virginica"</span>)</span>
-<span id="cb93-4"><a href=""></a>              </span>
-<span id="cb93-5"><a href=""></a><span class="do">## Plot the histogram of setosa, </span></span>
-<span id="cb93-6"><a href=""></a><span class="do">## and initialize the entire plot: </span></span>
-<span id="cb93-7"><a href=""></a></span>
-<span id="cb93-8"><a href=""></a><span class="fu">hist</span>(setosa<span class="sc">$</span>Petal.Length,</span>
-<span id="cb93-9"><a href=""></a>     <span class="at">col=</span>species_colors[<span class="st">"setosa"</span>],</span>
-<span id="cb93-10"><a href=""></a>     </span>
-<span id="cb93-11"><a href=""></a>     <span class="at">add=</span><span class="cn">FALSE</span>, <span class="do">## this is the default</span></span>
-<span id="cb93-12"><a href=""></a>     </span>
-<span id="cb93-13"><a href=""></a>     <span class="do">## initialize to full x range !</span></span>
-<span id="cb93-14"><a href=""></a>     <span class="at">xlim=</span><span class="fu">range</span>(iris<span class="sc">$</span>Petal.Length),</span>
-<span id="cb93-15"><a href=""></a>     </span>
-<span id="cb93-16"><a href=""></a>     <span class="do">## full y range you usually </span></span>
-<span id="cb93-17"><a href=""></a>     <span class="do">## only know after some trials ..</span></span>
-<span id="cb93-18"><a href=""></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">22</span>),</span>
-<span id="cb93-19"><a href=""></a>     </span>
-<span id="cb93-20"><a href=""></a>     <span class="do">## x-axis label</span></span>
-<span id="cb93-21"><a href=""></a>     <span class="at">xlab=</span><span class="st">"Petal Length"</span>,</span>
-<span id="cb93-22"><a href=""></a>     </span>
-<span id="cb93-23"><a href=""></a>     <span class="do">## larger axis labels:</span></span>
-<span id="cb93-24"><a href=""></a>     <span class="at">cex.lab =</span> <span class="dv">2</span>,</span>
-<span id="cb93-25"><a href=""></a>     </span>
-<span id="cb93-26"><a href=""></a>     <span class="at">main =</span> <span class="st">"Petal Length Distributions"</span>,</span>
-<span id="cb93-27"><a href=""></a>     </span>
-<span id="cb93-28"><a href=""></a>     <span class="do">## larger title:</span></span>
-<span id="cb93-29"><a href=""></a>     <span class="at">cex.main =</span> <span class="dv">2</span></span>
-<span id="cb93-30"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href=""></a>setosa <span class="ot">&lt;-</span> <span class="fu">subset</span>(iris,Species<span class="sc">==</span><span class="st">"setosa"</span>)</span>
+<span id="cb92-2"><a href=""></a>versicolor <span class="ot">&lt;-</span> <span class="fu">subset</span>(iris,Species<span class="sc">==</span><span class="st">"versicolor"</span>)</span>
+<span id="cb92-3"><a href=""></a>virginica <span class="ot">&lt;-</span> <span class="fu">subset</span>(iris,Species<span class="sc">==</span><span class="st">"virginica"</span>)</span>
+<span id="cb92-4"><a href=""></a>              </span>
+<span id="cb92-5"><a href=""></a><span class="do">## Plot the histogram of setosa, </span></span>
+<span id="cb92-6"><a href=""></a><span class="do">## and initialize the entire plot: </span></span>
+<span id="cb92-7"><a href=""></a></span>
+<span id="cb92-8"><a href=""></a><span class="fu">hist</span>(setosa<span class="sc">$</span>Petal.Length,</span>
+<span id="cb92-9"><a href=""></a>     <span class="at">col=</span>species_colors[<span class="st">"setosa"</span>],</span>
+<span id="cb92-10"><a href=""></a>     </span>
+<span id="cb92-11"><a href=""></a>     <span class="at">add=</span><span class="cn">FALSE</span>, <span class="do">## this is the default</span></span>
+<span id="cb92-12"><a href=""></a>     </span>
+<span id="cb92-13"><a href=""></a>     <span class="do">## initialize to full x range !</span></span>
+<span id="cb92-14"><a href=""></a>     <span class="at">xlim=</span><span class="fu">range</span>(iris<span class="sc">$</span>Petal.Length),</span>
+<span id="cb92-15"><a href=""></a>     </span>
+<span id="cb92-16"><a href=""></a>     <span class="do">## full y range you usually </span></span>
+<span id="cb92-17"><a href=""></a>     <span class="do">## only know after some trials ..</span></span>
+<span id="cb92-18"><a href=""></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">22</span>),</span>
+<span id="cb92-19"><a href=""></a>     </span>
+<span id="cb92-20"><a href=""></a>     <span class="do">## x-axis label</span></span>
+<span id="cb92-21"><a href=""></a>     <span class="at">xlab=</span><span class="st">"Petal Length"</span>,</span>
+<span id="cb92-22"><a href=""></a>     </span>
+<span id="cb92-23"><a href=""></a>     <span class="do">## larger axis labels:</span></span>
+<span id="cb92-24"><a href=""></a>     <span class="at">cex.lab =</span> <span class="dv">2</span>,</span>
+<span id="cb92-25"><a href=""></a>     </span>
+<span id="cb92-26"><a href=""></a>     <span class="at">main =</span> <span class="st">"Petal Length Distributions"</span>,</span>
+<span id="cb92-27"><a href=""></a>     </span>
+<span id="cb92-28"><a href=""></a>     <span class="do">## larger title:</span></span>
+<span id="cb92-29"><a href=""></a>     <span class="at">cex.main =</span> <span class="dv">2</span></span>
+<span id="cb92-30"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
@@ -3006,10 +3001,10 @@ with <strong>add=TRUE</strong>,&nbsp; its output goes directly to an existing pl
 <p>&nbsp;</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href=""></a><span class="fu">hist</span>(versicolor<span class="sc">$</span>Petal.Length,</span>
-<span id="cb94-2"><a href=""></a>     <span class="at">add=</span><span class="cn">TRUE</span>,</span>
-<span id="cb94-3"><a href=""></a>     <span class="at">col=</span>species_colors[<span class="st">"versicolor"</span>]</span>
-<span id="cb94-4"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href=""></a><span class="fu">hist</span>(versicolor<span class="sc">$</span>Petal.Length,</span>
+<span id="cb93-2"><a href=""></a>     <span class="at">add=</span><span class="cn">TRUE</span>,</span>
+<span id="cb93-3"><a href=""></a>     <span class="at">col=</span>species_colors[<span class="st">"versicolor"</span>]</span>
+<span id="cb93-4"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
@@ -3030,18 +3025,18 @@ with <strong>add=TRUE</strong>,&nbsp; its output goes directly to an existing pl
 <p>&nbsp;</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href=""></a><span class="fu">hist</span>(virginica<span class="sc">$</span>Petal.Length,</span>
-<span id="cb95-2"><a href=""></a>     <span class="at">add=</span><span class="cn">TRUE</span>,</span>
-<span id="cb95-3"><a href=""></a>     <span class="at">col=</span>species_colors[<span class="st">"virginica"</span>]</span>
-<span id="cb95-4"><a href=""></a>)</span>
-<span id="cb95-5"><a href=""></a></span>
-<span id="cb95-6"><a href=""></a><span class="fu">legend</span>(<span class="at">x=</span><span class="dv">2</span>,<span class="at">y=</span><span class="dv">22</span>, </span>
-<span id="cb95-7"><a href=""></a>       <span class="at">legend=</span><span class="fu">c</span>(<span class="st">"setosa"</span>,</span>
-<span id="cb95-8"><a href=""></a>                <span class="st">"versicolor"</span>,</span>
-<span id="cb95-9"><a href=""></a>                <span class="st">"virginica"</span>), </span>
-<span id="cb95-10"><a href=""></a>       <span class="at">fill=</span>species_colors,</span>
-<span id="cb95-11"><a href=""></a>       <span class="at">cex =</span><span class="fl">1.5</span>, <span class="do">## larger script in legend </span></span>
-<span id="cb95-12"><a href=""></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href=""></a><span class="fu">hist</span>(virginica<span class="sc">$</span>Petal.Length,</span>
+<span id="cb94-2"><a href=""></a>     <span class="at">add=</span><span class="cn">TRUE</span>,</span>
+<span id="cb94-3"><a href=""></a>     <span class="at">col=</span>species_colors[<span class="st">"virginica"</span>]</span>
+<span id="cb94-4"><a href=""></a>)</span>
+<span id="cb94-5"><a href=""></a></span>
+<span id="cb94-6"><a href=""></a><span class="fu">legend</span>(<span class="at">x=</span><span class="dv">2</span>,<span class="at">y=</span><span class="dv">22</span>, </span>
+<span id="cb94-7"><a href=""></a>       <span class="at">legend=</span><span class="fu">c</span>(<span class="st">"setosa"</span>,</span>
+<span id="cb94-8"><a href=""></a>                <span class="st">"versicolor"</span>,</span>
+<span id="cb94-9"><a href=""></a>                <span class="st">"virginica"</span>), </span>
+<span id="cb94-10"><a href=""></a>       <span class="at">fill=</span>species_colors,</span>
+<span id="cb94-11"><a href=""></a>       <span class="at">cex =</span><span class="fl">1.5</span>, <span class="do">## larger script in legend </span></span>
+<span id="cb94-12"><a href=""></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
@@ -3060,12 +3055,12 @@ with <strong>add=TRUE</strong>,&nbsp; its output goes directly to an existing pl
 <div class="fragment">
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href=""></a><span class="fu">boxplot</span>(Petal.Length <span class="sc">~</span> Species, </span>
-<span id="cb96-2"><a href=""></a>        <span class="at">data =</span> iris,</span>
-<span id="cb96-3"><a href=""></a>        <span class="do">## colors are not automatically</span></span>
-<span id="cb96-4"><a href=""></a>        <span class="do">## inferred from the factor levels!</span></span>
-<span id="cb96-5"><a href=""></a>        <span class="at">col =</span> species_colors</span>
-<span id="cb96-6"><a href=""></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href=""></a><span class="fu">boxplot</span>(Petal.Length <span class="sc">~</span> Species, </span>
+<span id="cb95-2"><a href=""></a>        <span class="at">data =</span> iris,</span>
+<span id="cb95-3"><a href=""></a>        <span class="do">## colors are not automatically</span></span>
+<span id="cb95-4"><a href=""></a>        <span class="do">## inferred from the factor levels!</span></span>
+<span id="cb95-5"><a href=""></a>        <span class="at">col =</span> species_colors</span>
+<span id="cb95-6"><a href=""></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
@@ -3083,11 +3078,11 @@ with <strong>add=TRUE</strong>,&nbsp; its output goes directly to an existing pl
 <div class="fragment">
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb97" data-code-line-numbers="1,4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href=""></a><span class="co"># Repeat the last boxplot, with an extended x axis: </span></span>
-<span id="cb97-2"><a href=""></a><span class="fu">boxplot</span>(Petal.Length <span class="sc">~</span> Species, </span>
-<span id="cb97-3"><a href=""></a>        <span class="at">data =</span> iris, <span class="at">col =</span> species_colors,</span>
-<span id="cb97-4"><a href=""></a>        <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">6</span>)</span>
-<span id="cb97-5"><a href=""></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb96" data-code-line-numbers="1,4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href=""></a><span class="co"># Repeat the last boxplot, with an extended x axis: </span></span>
+<span id="cb96-2"><a href=""></a><span class="fu">boxplot</span>(Petal.Length <span class="sc">~</span> Species, </span>
+<span id="cb96-3"><a href=""></a>        <span class="at">data =</span> iris, <span class="at">col =</span> species_colors,</span>
+<span id="cb96-4"><a href=""></a>        <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">6</span>)</span>
+<span id="cb96-5"><a href=""></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
@@ -3101,12 +3096,12 @@ with <strong>add=TRUE</strong>,&nbsp; its output goes directly to an existing pl
 <div class="fragment">
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href=""></a><span class="fu">boxplot</span>(iris<span class="sc">$</span>Petal.Length, <span class="co"># take the entire column!</span></span>
-<span id="cb98-2"><a href=""></a>        <span class="at">add=</span><span class="cn">TRUE</span>, </span>
-<span id="cb98-3"><a href=""></a>        <span class="at">at=</span><span class="dv">5</span>, <span class="do">## position on x axis</span></span>
-<span id="cb98-4"><a href=""></a>        <span class="at">names=</span><span class="st">"all species"</span>,</span>
-<span id="cb98-5"><a href=""></a>        <span class="at">show.names=</span><span class="cn">TRUE</span></span>
-<span id="cb98-6"><a href=""></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href=""></a><span class="fu">boxplot</span>(iris<span class="sc">$</span>Petal.Length, <span class="co"># take the entire column!</span></span>
+<span id="cb97-2"><a href=""></a>        <span class="at">add=</span><span class="cn">TRUE</span>, </span>
+<span id="cb97-3"><a href=""></a>        <span class="at">at=</span><span class="dv">5</span>, <span class="do">## position on x axis</span></span>
+<span id="cb97-4"><a href=""></a>        <span class="at">names=</span><span class="st">"all species"</span>,</span>
+<span id="cb97-5"><a href=""></a>        <span class="at">show.names=</span><span class="cn">TRUE</span></span>
+<span id="cb97-6"><a href=""></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
