@@ -3,7 +3,7 @@
 > [!NOTE]
 >
 > <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/info.svg" width="15" height="15"> 
-> LAST UPDATE: 30.04.2025
+> LAST UPDATE: 14.05.2025
 
 # R Programming Course for Biologists
 
@@ -106,7 +106,7 @@ To get started with the course follow the link below
 https://cecadbioinformaticscorefacility.github.io/Beginners_R_Course_2025/
 
 
-https://cecadbioinformaticscorefacility.github.io/Beginners_R_Course_2025/BeginnersDay1.html
+[Slides Beginners Day 1](https://cecadbioinformaticscorefacility.github.io/Beginners_R_Course_2025/slides/BeginnersDay1.html)
 
 To clone this repository using Git:
 
