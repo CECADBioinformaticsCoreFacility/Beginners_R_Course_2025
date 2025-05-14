@@ -1,0 +1,68 @@
+/*-- scss:defaults --*/
+
+$body-bg: #FFFFFF;
+$presentation-heading-color: #035AA6;
+$body-color: #333;
+$link-color: #42affa;
+$code-color: #f92672;
+$code-bg: #FFFFFF;// #F5F5F5;
+$code-block-bg: #ffffff; //#E8E8E8;
+$code-block-border-color: #333;
+/*
+    $code-bg: colour for background of inline code
+    $code-color: colour for the font of inline code
+    $code-block-bg: colour for background of blocks of code
+    $code-block-color: colour for the font of blocks of code
+    $code-block-border-color: colour for the border of blocks of code
+*/
+
+/*-- scss:rules --*/
+
+.reveal .slide blockquote {
+  border-left: 3px solid $text-muted;
+  padding-left: 0.5em;
+}
+
+// --------------- Custom styles header bg----------------
+/*
+section.slide h2 {
+  color: white !important;
+  background-color: #035AA6 !important;
+  width: 200vw;
+  position: relative;
+  left: -20vw;
+  padding-left: 20vw;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+*/
+//--------------- Tab colors ----------------
+.panel-tabset-tabby a {
+  color: #035AA6;
+  background-color: #E0E0E0;
+}
+
+.panel-tabset-tabby a:hover {
+  color: red;
+  background-color: #ffffff;
+}
+
+//----------------- Semi Title ----------------
+.title-head {
+  font-size: 2em;
+}
+
+//---------------- Make a <div> element smaller ----------------
+.table-small {
+  font-size: 0.8em;
+}
+
+.reveal .slide-number > a[href*='title-slide'] {
+  display: none;
+}
+
+.reveal .slide-logo {
+  -webkit-filter: invert(80%) sepia(99%) saturate(2076%) hue-rotate(194deg) brightness(92%) contrast(98%); /* Safari 6.0 - 9.0 */
+  filter: invert(80%) sepia(99%) saturate(2076%) hue-rotate(194deg) brightness(92%) contrast(98%);
+}
