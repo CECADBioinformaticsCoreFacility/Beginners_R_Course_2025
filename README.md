@@ -105,6 +105,9 @@ To get started with the course follow the link below
 
 https://cecadbioinformaticscorefacility.github.io/Beginners_R_Course_2025/
 
+
+https://cecadbioinformaticscorefacility.github.io/Beginners_R_Course_2025/BeginnersDay1.html
+
 To clone this repository using Git:
 
 ****
