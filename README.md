@@ -108,6 +108,8 @@ https://cecadbioinformaticscorefacility.github.io/Beginners_R_Course_2025/
 
 [Slides Beginners Day 1](https://cecadbioinformaticscorefacility.github.io/Beginners_R_Course_2025/slides/BeginnersDay1.html)
 
+[Slides Beginners Day 2](https://cecadbioinformaticscorefacility.github.io/Beginners_R_Course_2025/slides/BeginnersDay2.html)
+
 To clone this repository using Git:
 
 ****
